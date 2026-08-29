@@ -778,8 +778,7 @@ function finishMission() {
 function sendDataToGoogleSheet() {
   if (!GOOGLE_SCRIPT_URL) return;
 
-  // ส่ง parameter ระบุว่าบันทึกลงแท็บ Sheet2
-  const dataToSend = { ...answersData, sheet: "Sheet2" };
+  const dataToSend = { ...answersData, sheet: "ภารกิจ2" };
   const params = new URLSearchParams(dataToSend).toString();
   const finalUrl = `${GOOGLE_SCRIPT_URL}?${params}`;
 
@@ -787,7 +786,7 @@ function sendDataToGoogleSheet() {
     method: "GET",
     mode: "no-cors"
   })
-  .then(() => console.log("ส่งข้อมูลภารกิจ 3 เข้า Sheet2 สำเร็จ!"))
+  .then(() => console.log("ส่งข้อมูลเข้าแท็บ ภารกิจ2 สำเร็จ!"))
   .catch(err => console.log("ส่งไม่สำเร็จ:", err));
 }
 </script>
