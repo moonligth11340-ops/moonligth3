@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>ภารกิจที่ 3 — ความทรงจำ 🌙</title>
+
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Itim&family=Mitr:wght@300;400;500&display=swap');
+
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    body {
+
+      overflow: hidden;
+
+      font-family:
+        'Mitr',
+        sans-serif;
+
+      background: #090b25;
+
+      color: white;
+    }
+
+
+    /* =====================================
+       INTRO
+    ===================================== */
+
+    .mission-intro {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 100;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at 50% 35%,
+          #3c416f 0%,
+          #1b2045 45%,
+          #090b25 100%
+        );
+
+      transition:
+        opacity 1s ease,
+        transform 1s ease;
+    }
+
+
+    .mission-intro.hide {
+
+      opacity: 0;
+
+      transform:
+        scale(1.08);
+
+      pointer-events: none;
+    }
+
+
+    .intro-text {
+
+      width: 90%;
+
+      max-width: 650px;
+
+      animation:
+        introAppear 1s ease;
+    }
+
+
+    .intro-moon {
+
+      position: absolute;
+
+      top: 12%;
+
+      left: 50%;
+
+      transform:
+        translateX(-50%);
+
+      font-size: 90px;
+
+      animation:
+        moonBounce 3s
+        ease-in-out
+        infinite;
+    }
+
+
+    @keyframes moonBounce {
+
+      0%, 100% {
+
+        transform:
+          translateX(-50%)
+          translateY(0);
+      }
+
+      50% {
+
+        transform:
+          translateX(-50%)
+          translateY(-12px);
+      }
+
+    }
+
+
+    .hello {
+
+      font-family:
+        'Itim',
+        cursive;
+
+      font-size:
+        clamp(28px, 5vw, 42px);
+
+      color: #fff4bd;
+
+      margin-bottom: 15px;
+
+      text-shadow:
+        0 0 15px
+        rgba(255,244,189,.4);
+    }
+
+
+    .intro-text h1 {
+
+      font-family:
+        'Itim',
+        cursive;
+
+      font-size:
+        clamp(35px, 6vw, 52px);
+
+      margin-bottom: 20px;
+    }
+
+
+    .intro-text p {
+
+      font-size: 17px;
+
+      line-height: 1.9;
+
+      opacity: .85;
+
+      margin-bottom: 30px;
+    }
+
+
+    .intro-text button {
+
+      padding:
+        13px 32px;
+
+      border: none;
+
+      border-radius: 50px;
+
+      background: #fff4bd;
+
+      color: #343052;
+
+      font-family:
+        'Mitr',
+        sans-serif;
+
+      font-size: 17px;
+
+      cursor: pointer;
+
+      transition: .3s;
+
+      box-shadow:
+        0 5px 25px
+        rgba(255,244,189,.25);
+    }
+
+
+    .intro-text button:hover {
+
+      transform:
+        translateY(-4px)
+        scale(1.05);
+    }
+
+
+    @keyframes introAppear {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateY(20px);
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+
+    }
+
+
+
+    /* =====================================
+       ปุ่มเพลง
+    ===================================== */
+
+    .music-button {
+
+      position: fixed;
+
+      right: 25px;
+      top: 25px;
+
+      z-index: 150;
+
+      width: 45px;
+      height: 45px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid
+        rgba(255,255,255,.2);
+
+      background:
+        rgba(255,255,255,.08);
+
+      backdrop-filter:
+        blur(8px);
+
+      color: white;
+
+      font-size: 20px;
+
+      cursor: pointer;
+
+      transition: .3s;
+    }
+
+
+    .music-button:hover {
+
+      transform:
+        scale(1.1);
+
+      background:
+        rgba(255,255,255,.15);
+    }
+
+
+
+    /* =====================================
+       ท้องฟ้า
+    ===================================== */
+
+    .sky {
+
+      position: relative;
+
+      width: 100vw;
+      height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 50% 40%,
+          #343a68 0%,
+          #171b40 45%,
+          #090b25 100%
+        );
+    }
+
+
+    /* ดาวพื้นหลัง */
+
+    .background-star {
+
+      position: absolute;
+
+      width: 3px;
+      height: 3px;
+
+      border-radius: 50%;
+
+      background: white;
+
+      opacity: .5;
+
+      animation:
+        twinkle 3s
+        infinite
+        ease-in-out;
+    }
+
+
+    @keyframes twinkle {
+
+      0%, 100% {
+        opacity: .2;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+    }
+
+
+
+    /* =====================================
+       พระจันทร์
+    ===================================== */
+
+    .moon {
+
+      position: absolute;
+
+      width: 125px;
+      height: 125px;
+
+      right: 8%;
+      top: 8%;
+
+      border-radius: 50%;
+
+      background: #fff4bd;
+
+      box-shadow:
+        0 0 30px #fff4bd,
+        0 0 80px
+        rgba(255,244,189,.3);
+
+      animation:
+        moonFloat 4s
+        ease-in-out
+        infinite;
+
+      transition: .8s;
+    }
+
+
+    .moon.hide {
+
+      opacity: 0;
+
+      transform:
+        translateY(-30px);
+    }
+
+
+    @keyframes moonFloat {
+
+      0%, 100% {
+        transform:
+          translateY(0);
+      }
+
+      50% {
+        transform:
+          translateY(-10px);
+      }
+
+    }
+
+
+    .moon-eye {
+
+      position: absolute;
+
+      width: 7px;
+      height: 11px;
+
+      background: #393452;
+
+      border-radius: 50%;
+
+      top: 50px;
+    }
+
+
+    .moon-eye.left {
+      left: 38px;
+    }
+
+
+    .moon-eye.right {
+      right: 38px;
+    }
+
+
+    .moon-smile {
+
+      position: absolute;
+
+      width: 18px;
+      height: 10px;
+
+      left: 54px;
+      top: 70px;
+
+      border-bottom:
+        3px solid #393452;
+
+      border-radius: 50%;
+    }
+
+
+
+    /* =====================================
+       เสียงแว่ว
+    ===================================== */
+
+    .memory-area {
+
+      position: absolute;
+
+      inset: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition:
+        opacity 1.5s;
+    }
+
+
+    .memory-area.show {
+
+      opacity: 1;
+
+      pointer-events: auto;
+    }
+
+
+    .whisper {
+
+      width: 90%;
+
+      max-width: 650px;
+    }
+
+
+    .whisper-small {
+
+      font-size: 16px;
+
+      opacity: .45;
+
+      margin-bottom: 25px;
+
+      animation:
+        whisperFade 3s
+        infinite;
+    }
+
+
+    .whisper-text {
+
+      font-family:
+        'Itim',
+        cursive;
+
+      font-size:
+        clamp(30px, 6vw, 50px);
+
+      line-height: 1.7;
+
+      text-shadow:
+        0 0 20px
+        rgba(255,255,255,.25);
+
+      min-height: 150px;
+    }
+
+
+    @keyframes whisperFade {
+
+      0%, 100% {
+        opacity: .25;
+      }
+
+      50% {
+        opacity: .7;
+      }
+
+    }
+
+
+
+    /* =====================================
+       ปุ่มเริ่มฟัง
+    ===================================== */
+
+    .listen-button {
+
+      margin-top: 30px;
+
+      padding:
+        12px 30px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.25);
+
+      border-radius: 50px;
+
+      background:
+        rgba(255,255,255,.08);
+
+      color: white;
+
+      font-family:
+        'Mitr',
+        sans-serif;
+
+      font-size: 16px;
+
+      cursor: pointer;
+
+      transition: .3s;
+    }
+
+
+    .listen-button:hover {
+
+      background:
+        rgba(255,255,255,.15);
+
+      transform:
+        translateY(-3px);
+    }
+
+
+
+    /* =====================================
+       กล่องคำถาม
+    ===================================== */
+
+    .question-area {
+
+      position: absolute;
+
+      inset: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition:
+        opacity 1s;
+    }
+
+
+    .question-area.show {
+
+      opacity: 1;
+
+      pointer-events: auto;
+    }
+
+
+    .question-box {
+
+      width:
+        min(90%, 600px);
+
+      padding:
+        35px 30px;
+
+      border-radius: 28px;
+
+      background:
+        rgba(22,26,62,.8);
+
+      border:
+        1px solid
+        rgba(255,255,255,.12);
+
+      backdrop-filter:
+        blur(15px);
+
+      box-shadow:
+        0 20px 80px
+        rgba(0,0,0,.35);
+
+      text-align: center;
+    }
+
+
+    .question-star {
+
+      font-size: 35px;
+
+      margin-bottom: 15px;
+    }
+
+
+    .question-box h2 {
+
+      font-family:
+        'Itim',
+        cursive;
+
+      font-size:
+        clamp(25px, 5vw, 35px);
+
+      line-height: 1.6;
+
+      margin-bottom: 25px;
+    }
+
+
+    .answers {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 10px;
+    }
+
+
+    .answer {
+
+      padding:
+        13px 18px;
+
+      border-radius: 16px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.15);
+
+      background:
+        rgba(255,255,255,.06);
+
+      color: white;
+
+      font-family:
+        'Mitr',
+        sans-serif;
+
+      font-size: 16px;
+
+      cursor: pointer;
+
+      transition: .3s;
+    }
+
+
+    .answer:hover {
+
+      background:
+        rgba(255,244,189,.15);
+
+      transform:
+        translateY(-2px);
+    }
+
+
+
+    /* =====================================
+       INPUT
+    ===================================== */
+
+    .memory-input {
+
+      width: 100%;
+
+      min-height: 110px;
+
+      padding: 15px;
+
+      border-radius: 16px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.15);
+
+      background:
+        rgba(255,255,255,.06);
+
+      color: white;
+
+      outline: none;
+
+      resize: none;
+
+      font-family:
+        'Mitr',
+        sans-serif;
+
+      font-size: 16px;
+    }
+
+
+    .memory-input:focus {
+
+      border-color:
+        rgba(255,244,189,.5);
+    }
+
+
+    .send-button {
+
+      margin-top: 15px;
+
+      padding:
+        11px 28px;
+
+      border: none;
+
+      border-radius: 50px;
+
+      background: #fff4bd;
+
+      color: #343052;
+
+      font-family:
+        'Mitr',
+        sans-serif;
+
+      cursor: pointer;
+    }
+
+
+
+    /* =====================================
+       คำตอบจากพระจันทร์
+    ===================================== */
+
+    .moon-reply {
+
+      margin-top: 25px;
+
+      font-family:
+        'Itim',
+        cursive;
+
+      font-size: 22px;
+
+      line-height: 1.7;
+
+      opacity: 0;
+
+      transform:
+        translateY(10px);
+
+      transition: .6s;
+    }
+
+
+    .moon-reply.show {
+
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+
+
+    /* =====================================
+       ตอนจบ
+    ===================================== */
+
+    .ending {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 200;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      background:
+        radial-gradient(
+          circle at center,
+          #34396c,
+          #090b25 75%
+        );
+
+      transition:
+        opacity 1.5s;
+    }
+
+
+    .ending.show {
+
+      opacity: 1;
+
+      pointer-events: auto;
+    }
+
+
+    .ending-content {
+
+      width: 90%;
+
+      max-width: 650px;
+    }
+
+
+    .ending-moon {
+
+      font-size: 100px;
+
+      margin-bottom: 20px;
+
+      animation:
+        moonFloat 4s
+        infinite
+        ease-in-out;
+    }
+
+
+    .ending h1 {
+
+      font-family:
+        'Itim',
+        cursive;
+
+      font-size:
+        clamp(35px, 7vw, 55px);
+
+      margin-bottom: 20px;
+    }
+
+
+    .ending p {
+
+      font-size: 18px;
+
+      line-height: 2;
+
+      opacity: .9;
+    }
+
+
+    .ending .next {
+
+      margin-top: 30px;
+
+      color: #fff4bd;
+
+      font-family:
+        'Itim',
+        cursive;
+
+      font-size: 24px;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     เพลง
+===================================== -->
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="./Music/M/bgm.mp3" type="audio/mpeg">
+</audio>
+
+
+<button
+  class="music-button"
+  id="musicButton"
+  onclick="toggleMusic()"
+>
+
+  🔇
+
+</button>
+
+
+
+<!-- =====================================
+     INTRO
+===================================== -->
+
+<div
+  class="mission-intro"
+  id="missionIntro"
+>
+
+  <div class="intro-moon">
+    🌙
+  </div>
+
+
+  <div class="intro-text">
+
+    <div class="hello">
+      ภารกิจที่สองมาแล้วค้าบบบ! ✨
+    </div>
+
+
+    <h1>
+      ความทรงจำ 💭
+    </h1>
+
+
+    <p>
+
+      คราวนี้เราไม่ต้องตามหาดาวแล้วล่ะ<br>
+
+      แต่มีบางอย่างที่อยากให้เธอลองนึกถึง...
+
+    </p>
+
+
+    <button
+      onclick="startMission()"
+    >
+
+      พร้อมแล้ว ✦
+
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================
+     ท้องฟ้า
+===================================== -->
+
+<div class="sky">
+
+
+  <!-- ดาว -->
+
+  <div
+    class="background-star"
+    style="left:6%;top:15%"
+  ></div>
+
+  <div
+    class="background-star"
+    style="left:14%;top:35%"
+  ></div>
+
+  <div
+    class="background-star"
+    style="left:25%;top:20%"
+  ></div>
+
+  <div
+    class="background-star"
+    style="left:37%;top:12%"
+  ></div>
+
+  <div
+    class="background-star"
+    style="left:50%;top:25%"
+  ></div>
+
+  <div
+    class="background-star"
+    style="left:67%;top:15%"
+  ></div>
+
+  <div
+    class="background-star"
+    style="left:82%;top:28%"
+  ></div>
+
+  <div
+    class="background-star"
+    style="left:94%;top:15%"
+  ></div>
+
+  <div
+    class="background-star"
+    style="left:10%;top:80%"
+  ></div>
+
+  <div
+    class="background-star"
+    style="left:30%;top:88%"
+  ></div>
+
+  <div
+    class="background-star"
+    style="left:55%;top:80%"
+  ></div>
+
+  <div
+    class="background-star"
+    style="left:78%;top:85%"
+  ></div>
+
+
+
+  <!-- พระจันทร์ -->
+
+  <div
+    class="moon"
+    id="moon"
+  >
+
+    <div
+      class="moon-eye left"
+    ></div>
+
+    <div
+      class="moon-eye right"
+    ></div>
+
+    <div class="moon-smile"></div>
+
+  </div>
+
+
+
+  <!-- =================================
+       เสียงแว่ว
+  ================================= -->
+
+  <div
+    class="memory-area"
+    id="memoryArea"
+  >
+
+    <div class="whisper">
+
+      <div class="whisper-small">
+
+        เสียงแว่วมาจากที่ไกล ๆ...
+
+      </div>
+
+
+      <div
+        class="whisper-text"
+        id="whisperText"
+      >
+
+        ได้ยินเราหรือเปล่า?
+
+      </div>
+
+
+      <button
+        class="listen-button"
+        id="listenButton"
+        onclick="startQuestions()"
+      >
+
+        ได้ยินแล้ว ✦
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =================================
+       คำถาม
+  ================================= -->
+
+  <div
+    class="question-area"
+    id="questionArea"
+  >
+
+    <div class="question-box">
+
+      <div class="question-star">
+        ✦
+      </div>
+
+
+      <h2 id="question">
+        คำถาม
+      </h2>
+
+
+      <div
+        class="answers"
+        id="answers"
+      ></div>
+
+
+      <div
+        id="inputArea"
+      ></div>
+
+
+      <div
+        class="moon-reply"
+        id="moonReply"
+      ></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================
+     ตอนจบ
+===================================== -->
+
+<div
+  class="ending"
+  id="ending"
+>
+
+  <div class="ending-content">
+
+    <div class="ending-moon">
+      🌙
+    </div>
+
+
+    <h1>
+      ขอบคุณที่เล่าให้เราฟังนะ
+    </h1>
+
+
+    <p>
+
+      ความทรงจำบางอย่าง<br>
+
+      อาจไม่ได้อยู่บนท้องฟ้า...
+
+      <br>
+
+      แต่มันอยู่ในใจของคนที่จำมันได้เสมอ
+
+    </p>
+
+
+    <div class="next">
+
+      “เอาล่ะ... ได้เวลาเดินทางต่อแล้ว 🌙”
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================
+   เพลง
+===================================== */
+
+const music =
+  document.getElementById(
+    "bgMusic"
+  );
+
+const musicButton =
+  document.getElementById(
+    "musicButton"
+  );
+
+
+let musicPlaying = false;
+
+
+function startMusic() {
+
+  music.volume = 0.35;
+
+  music.play()
+    .then(() => {
+
+      musicPlaying = true;
+
+      musicButton.textContent =
+        "🎵";
+
+    })
+    .catch(() => {
+
+      console.log(
+        "Browser blocked autoplay"
+      );
+
+    });
+
+}
+
+
+function toggleMusic() {
+
+  if (musicPlaying) {
+
+    music.pause();
+
+    musicPlaying = false;
+
+    musicButton.textContent =
+      "🔇";
+
+  } else {
+
+    music.play();
+
+    musicPlaying = true;
+
+    musicButton.textContent =
+      "🎵";
+
+  }
+
+}
+
+
+
+/* =====================================
+   เริ่มภารกิจ
+===================================== */
+
+function startMission() {
+
+
+  /* เริ่มเพลง */
+
+  startMusic();
+
+
+  const intro =
+    document.getElementById(
+      "missionIntro"
+    );
+
+
+  intro.classList.add(
+    "hide"
+  );
+
+
+  setTimeout(() => {
+
+    document
+      .getElementById(
+        "memoryArea"
+      )
+      .classList.add(
+        "show"
+      );
+
+  }, 900);
+
+}
+
+
+
+/* =====================================
+   คำถาม
+===================================== */
+
+const questions = [
+
+
+  {
+
+    type: "choice",
+
+    question:
+      "ครั้งแรกที่เราได้รู้จักกัน... เธอจำได้ไหม?",
+
+    answers: [
+
+      "จำได้สิ 🌙",
+
+      "พอจำได้อยู่",
+
+      "จำไม่ค่อยได้แล้ว 555",
+
+      "ขอคิดก่อนนะ..."
+
+    ]
+
+  },
+
+
+  {
+
+    type: "input",
+
+    question:
+      "มีช่วงเวลาไหนที่เธอจำได้ดีเป็นพิเศษไหม?"
+
+  },
+
+
+  {
+
+    type: "choice",
+
+    question:
+      "ถ้าย้อนกลับไปแก้ไขอะไรสักอย่างในความทรงจำของเราได้ 1 อย่าง... เธอจะเลือกแก้อะไร?",
+
+    answers: [
+
+      "มีนะ อยากกลับไปแก้",
+
+      "ไม่แก้อะไรเลย",
+
+      "อยากกลับไปช่วงเวลานั้นอีกครั้ง",
+
+      "คิดไม่ออกเลย 🤔"
+
+    ]
+
+  },
+
+
+  {
+
+    type: "input",
+
+    question:
+      "แล้วถ้าถามว่า... ความทรงจำที่เธออยากสร้างต่อจากนี้คืออะไร?"
+
+  }
+
+];
+
+
+let currentQuestion = 0;
+
+
+
+/* =====================================
+   เริ่มคำถาม
+===================================== */
+
+function startQuestions() {
+
+
+  document
+    .getElementById(
+      "memoryArea"
+    )
+    .classList.remove(
+      "show"
+    );
+
+
+  document
+    .getElementById(
+      "moon"
+    )
+    .classList.add(
+      "hide"
+    );
+
+
+  setTimeout(() => {
+
+    document
+      .getElementById(
+        "questionArea"
+      )
+      .classList.add(
+        "show"
+      );
+
+
+    showQuestion();
+
+  }, 1000);
+
+}
+
+
+
+/* =====================================
+   แสดงคำถาม
+===================================== */
+
+function showQuestion() {
+
+
+  const data =
+    questions[
+      currentQuestion
+    ];
+
+
+  const question =
+    document.getElementById(
+      "question"
+    );
+
+
+  question.textContent =
+    data.question;
+
+
+  const answers =
+    document.getElementById(
+      "answers"
+    );
+
+
+  const inputArea =
+    document.getElementById(
+      "inputArea"
+    );
+
+
+  const reply =
+    document.getElementById(
+      "moonReply"
+    );
+
+
+  answers.innerHTML = "";
+
+  inputArea.innerHTML = "";
+
+  reply.textContent = "";
+
+  reply.classList.remove(
+    "show"
+  );
+
+
+
+  /* คำถามแบบตัวเลือก */
+
+  if (
+    data.type ===
+    "choice"
+  ) {
+
+
+    data.answers.forEach(
+      answer => {
+
+        const button =
+          document.createElement(
+            "button"
+          );
+
+
+        button.className =
+          "answer";
+
+
+        button.textContent =
+          answer;
+
+
+        button.onclick =
+          () => {
+
+            answerQuestion(
+              answer
+            );
+
+          };
+
+
+        answers.appendChild(
+          button
+        );
+
+      }
+    );
+
+  }
+
+
+
+  /* คำถามให้พิมพ์ */
+
+  else {
+
+
+    const textarea =
+      document.createElement(
+        "textarea"
+      );
+
+
+    textarea.className =
+      "memory-input";
+
+
+    textarea.placeholder =
+      "พิมพ์คำตอบของเธอไว้ตรงนี้...";
+
+
+    const send =
+      document.createElement(
+        "button"
+      );
+
+
+    send.className =
+      "send-button";
+
+
+    send.textContent =
+      "ส่งคำตอบ ✦";
+
+
+    send.onclick =
+      () => {
+
+        if (
+          textarea.value.trim()
+          === ""
+        ) {
+
+          textarea.placeholder =
+            "ลองพิมพ์อะไรสักหน่อยสิ 🌙";
+
+          return;
+
+        }
+
+
+        answerQuestion(
+          textarea.value
+        );
+
+      };
+
+
+    inputArea.appendChild(
+      textarea
+    );
+
+    inputArea.appendChild(
+      send
+    );
+
+  }
+
+}
+
+
+
+/* =====================================
+   ตอบคำถาม
+===================================== */
+
+function answerQuestion(
+  answer
+) {
+
+
+  const answers =
+    document.getElementById(
+      "answers"
+    );
+
+
+  const inputArea =
+    document.getElementById(
+      "inputArea"
+    );
+
+
+  const reply =
+    document.getElementById(
+      "moonReply"
+    );
+
+
+  answers.innerHTML = "";
+
+  inputArea.innerHTML = "";
+
+
+  const replies = [
+
+    "อืม... เราก็จำได้เหมือนกันนะ 🌙",
+
+    "เราจะเก็บคำตอบนี้เอาไว้ให้ดีเลย",
+
+    "ขอบคุณที่เล่าให้เราฟังนะ ✨",
+
+    "บางทีความทรงจำแบบนี้ก็น่ารักดีเหมือนกัน",
+
+    "เราชอบคำตอบนี้จัง"
+
+  ];
+
+
+  reply.textContent =
+    replies[
+      currentQuestion %
+      replies.length
+    ];
+
+
+  reply.classList.add(
+    "show"
+  );
+
+
+  setTimeout(() => {
+
+    currentQuestion++;
+
+
+    if (
+      currentQuestion
+      >= questions.length
+    ) {
+
+      finishMission();
+
+    } else {
+
+      showQuestion();
+
+    }
+
+  }, 1800);
+
+}
+
+
+
+/* =====================================
+   จบภารกิจ
+===================================== */
+
+function finishMission() {
+
+
+  document
+    .getElementById(
+      "questionArea"
+    )
+    .classList.remove(
+      "show"
+    );
+
+
+  setTimeout(() => {
+
+    document
+      .getElementById(
+        "ending"
+      )
+      .classList.add(
+        "show"
+      );
+
+  }, 700);
+
+}
+
+</script>
+
+</body>
+</html>
